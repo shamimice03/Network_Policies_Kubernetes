@@ -1,0 +1,18 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-loadbalancer
+  namespace: frontend
+spec:
+  podSelector:             
+    matchLabels: {}
+  ingress:                   
+    - from:
+      - ipBlock:           
+          cidr: 0.0.0.0/0 
+          except:            # Restricts a private IP CIDR ranges.
+            - 10.0.0.0/8
+            - 172.16.0.0/12
+            - 192.168.0.0/16
+---  
