@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-dev-namespace-ingress
+  name: allow-ingress-from-frontend
   namespace: backend
 spec:
   podSelector:
