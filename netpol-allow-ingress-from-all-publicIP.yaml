@@ -10,9 +10,12 @@ spec:
   ingress:                   
     - from:
       - ipBlock:           
-          cidr: 0.0.0.0/0 
+          cidr: 45.76.197.98/32
           except:            # Restricts a private IP CIDR ranges.
             - 10.0.0.0/8
             - 172.16.0.0/12
             - 192.168.0.0/16
----  
+       
+      ports:                
+        - protocol: TCP
+          port: 80
