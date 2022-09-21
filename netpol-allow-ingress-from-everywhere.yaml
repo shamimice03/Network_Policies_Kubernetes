@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-loadbalancer
+  namespace: frontend
+spec:
+  podSelector:             
+    matchLabels: {}
+  ingress:                   
+    - from:
+      - ipBlock:           
+          cidr: 0.0.0.0/0    
+          except:             # Restrict the Private IP CIDR Block of your pod network. 
+           - 10.0.0.0/8       # So that, pods from other namespaces cannot send ingress traffic.
+      ports:                
+      - protocol: TCP
+        port: 80 
+---
